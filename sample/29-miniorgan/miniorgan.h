@@ -54,6 +54,8 @@
 #include <circle/serial.h>
 #include <circle/types.h>
 
+#define MAX_NOTES 10
+
 struct TNoteInfo
 {
 	char	Key;
@@ -93,16 +95,23 @@ private:
 
 	int      m_nLowLevel;
 	int      m_nNullLevel;
+	int      m_nDiffLevel;
 	int      m_nHighLevel;
 	int      m_nCurrentLevel;
 	unsigned m_nSampleCount;
-	unsigned m_nFrequency;		// 0 if no key pressed
+	//unsigned m_nFrequency[MAX_NOTES];
 	unsigned m_nPrevFrequency;
+	unsigned m_nPitchBend;
 
-	u8 m_ucKeyNumber;
+	u8 m_ucKeyNumber[MAX_NOTES];
 
 	boolean m_bSetVolume;
 	u8 m_uchVolume;
+	u8 m_modulation;
+	u8 m_noise;
+	u8 m_detune;
+
+	unsigned m_nRandSeed;
 
 	static const float s_KeyFrequency[];
 	static const TNoteInfo s_Keys[];

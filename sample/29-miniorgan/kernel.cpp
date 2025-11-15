@@ -105,6 +105,7 @@ TShutdownMode CKernel::Run (void)
 		assert (m_pUSB);
 		boolean bUpdated = m_pUSB->UpdatePlugAndPlay ();
 
+		//m_Logger.Write (FromKernel, LogNotice, "loop %u", nCount);
 		m_pMiniOrgan->Process (bUpdated);
 
 		m_Screen.Rotor (0, nCount);
